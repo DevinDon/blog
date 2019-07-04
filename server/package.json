@@ -1,0 +1,49 @@
+{
+  "name": "blog.server",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "src/demo",
+    "test": "src/test"
+  },
+  "files": [
+    "dist",
+    "docs"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
+    "dev": "bash -c \"MODE=DEV node -r ts-node/register src/main/index.ts\"",
+    "dist": "bash -c \"MODE=PROD node dist\"",
+    "start": "npm run build && npm run dist",
+    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
+  },
+  "keywords": [
+    "typescript",
+    "project"
+  ],
+  "author": "IInfinity <I.INF@Outlook.com> (https://don.red/)",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@rester/core": "0.9.5",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "@types/jasmine": "3.3.13",
+    "@types/node": "12.0.8",
+    "jasmine": "3.4.0",
+    "jasmine-console-reporter": "3.1.0",
+    "ts-node": "8.2.0",
+    "typescript": "3.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevinDon/tour-of-heroes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DevinDon/tour-of-heroes/issues"
+  },
+  "homepage": "https://github.com/DevinDon/tour-of-heroes"
+}

@@ -1,0 +1,73 @@
+version: '3.7'
+
+services:
+
+  # # PostgreSQL, backend ,expose 5432
+  # blog-database:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: application
+  #     POSTGRES_PASSWORD: application
+  #     POSTGRES_DB: application
+  #   networks:
+  #     - overnet
+  #   volumes:
+  #     - "blog-database:/var/lib/postgresql/data"
+  #   #   - ./config/postgresql:/etc/postgresql:ro
+
+  # # Redis, backend, expose 6379
+  # blog-redis:
+  #   image: redis
+  #   container_name: blog-redis
+  #   networks:
+  #     - backend
+  #   # volumes:
+  #   #   - ./config/redis:/etc/redis:ro
+
+  # KBS, frontend & backend, expose 8080 - 8082
+  blog-server:
+    image: blog-server
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
+    networks:
+      - overnet
+    volumes:
+      - "blog-database:/db:rw"
+
+  # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
+  blog-client:
+    image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx:amd64
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
+    networks:
+      - overnet
+    # ports:
+      # - "80:80"
+      # - "443:443"
+      # - "13306:3306"
+      # - "15432:5432"
+      # - "16379:6379"
+    volumes:
+      - "./etc/nginx:/etc/nginx:ro"
+      - "./client:/app:ro"
+
+networks:
+  overnet:
+    external: true
+    name: overnet
+
+volumes:
+  blog-database:
+  # blog-server:
