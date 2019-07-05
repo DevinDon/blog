@@ -25,15 +25,17 @@
       }
     }
   }
-  @media screen and (min-width: 600px) {
+}
+
+@media screen and (min-width: 600px) {
+  .wave {
+    width: 25rem;
+  }
+  #nav {
     box-shadow: -8px -6px 12px -5px rgba(0, 0, 0, 0.3);
     width: 25rem;
-    > ul {
-      > li {
-        > a {
-          width: 25rem;
-        }
-      }
+    > ul > li > a {
+      width: 25rem;
     }
   }
 }
