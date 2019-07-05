@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { ArticleComponent } from './article/article.component';
+import { HomeComponent } from './home/home.component';
 import { ImageComponent } from './image/image.component';
 import { MaterialModule } from './module/material.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
@@ -21,7 +22,8 @@ import { VideoComponent } from './video/video.component';
     ArticleComponent,
     SongComponent,
     VideoComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     SharedModule,

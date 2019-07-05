@@ -1,0 +1,20 @@
+<div class="wave"></div>
+<div class="window">
+
+  <h1 class="title">{{ app.title }}</h1>
+
+  <p class="desc">{{ desc }}</p>
+
+  <div class="link">
+    <a mat-button href="https://github.com/DevinDon/app-template" target="_blank">
+      <mat-icon class="remixicon-github-line"></mat-icon>GitHub
+    </a>
+    <a mat-button href="mailto:I.INF@Outlook.com">
+      <mat-icon>mail_outline</mat-icon>Mail
+    </a>
+    <a mat-button [routerLink]="[ '/nav' ]">
+      <mat-icon>menu</mat-icon>Content
+    </a>
+  </div>
+
+</div>
