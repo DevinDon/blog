@@ -1,15 +1,7 @@
-import { Component } from '@angular/core';
-import { async, TestBed, ComponentFixture } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-
-// tslint:disable: component-selector
-@Component({ selector: 'router-outlet', template: '' })
-class RouterOutletComponent { }
-
-const appServiceStub: Partial<AppService> = {
-  title: 'Template'
-};
+import { appServiceStub, RouterOutletStubComponent } from './module/stub.module';
 
 describe('AppComponent', () => {
 
@@ -21,7 +13,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        RouterOutletComponent
+        RouterOutletStubComponent
       ],
       providers: [{ provide: AppService, useValue: appServiceStub }]
     }).compileComponents();
