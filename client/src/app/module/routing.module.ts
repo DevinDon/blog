@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, DetachedRouteHandle, Route, RouteReuseStrategy, RouterModule } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
+import { ArticleComponent } from '../article/article.component';
+import { ImageComponent } from '../image/image.component';
+import { SongComponent } from '../song/song.component';
+import { VideoComponent } from '../video/video.component';
 
 export const routes: Route[] = [
-  { path: 'about', component: AboutComponent }
+  { path: '', component: AboutComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'article', component: ArticleComponent },
+  { path: 'image', component: ImageComponent },
+  { path: 'song', component: SongComponent },
+  { path: 'video', component: VideoComponent }
 ];
 
 @NgModule({
