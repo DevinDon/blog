@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 import { AppService } from '../app.service';
 
 interface Route {
@@ -13,6 +14,8 @@ interface Route {
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+
+  @Input() public sidenav: MatSidenav;
 
   public routes: Route[] = [
     { icon: 'home', link: '/', text: '首页' },

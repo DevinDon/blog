@@ -2,7 +2,7 @@
 
   <mat-sidenav #sidenav [autoFocus]="false" [mode]="app.info.isDesktop ? 'side' : 'over'" [opened]="app.info.isDesktop"
     [position]="'end'">
-    <app-nav></app-nav>
+    <app-nav [sidenav]="sidenav"></app-nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
