@@ -1,3 +1,18 @@
-<div [@routing]="app.animation">
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav [autoFocus]="false" [mode]="app.info.isDesktop ? 'side' : 'over'" [opened]="app.info.isDesktop"
+    [position]="'end'">
+    <app-nav></app-nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div [@routing]="app.animation">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<button mat-mini-fab color="primary" id="content" (click)="sidenav.toggle()">
+  <mat-icon>menu</mat-icon>
+</button>
