@@ -8,22 +8,6 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routing', [
-      transition('* => nav', [
-        style({ position: 'relative' }),
-        query(':leave', [style({ position: 'absolute', top: 0, right: 0, opacity: 1, width: '100%' })], { optional: true }),
-        query(
-          ':enter',
-          [style({ position: 'absolute', top: 0, right: 0, opacity: 0, width: window.innerWidth > 599 ? '100%' : '25rem' })],
-          { optional: true }
-        ),
-        query(':enter', [style({ right: window.innerWidth > 599 ? '-100%' : '-25rem' })], { optional: true }),
-        query(':leave', animateChild(), { optional: true }),
-        group([
-          query(':leave', [animate('500ms ease-in-out', style({ right: '-100%', opacity: 0 }))], { optional: true }),
-          query(':enter', [animate('500ms ease-in-out', style({ right: 0, opacity: 1 }))], { optional: true })
-        ]),
-        query(':enter', animateChild(), { optional: true }),
-      ]),
       transition('* <=> *', [
         style({ position: 'relative' }),
         query(':leave', [style({ position: 'absolute', top: 0, right: 0, opacity: 1, width: '100%' })], { optional: true }),
