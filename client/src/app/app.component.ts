@@ -1,9 +1,6 @@
 import { animate, animateChild, group, query, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import { destory } from './other/destory';
 
 @Component({
   selector: 'app-root',
@@ -26,24 +23,12 @@ import { destory } from './other/destory';
     ])
   ]
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
 
   public routing = -1;
 
-  public subscriptions: Subscription[] = [];
-
   constructor(
-    public app: AppService,
-    private router: Router
-  ) {
-    this.subscriptions
-      .push(
-        router.events.subscribe(event => event instanceof NavigationEnd && (this.routing = event.id))
-      );
-  }
-
-  ngOnDestroy() {
-    destory(this.subscriptions);
-  }
+    public app: AppService
+  ) { }
 
 }

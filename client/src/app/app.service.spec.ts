@@ -10,11 +10,6 @@ describe('AppService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should has properity name', () => {
-    const service: AppService = TestBed.get(AppService);
-    expect(service.name).toBeTruthy();
-  });
-
   it('should has properity title', () => {
     const service: AppService = TestBed.get(AppService);
     expect(service.title).toBeTruthy();
