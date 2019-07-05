@@ -35,11 +35,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title in an h1.title tag', () => {
-    expect(element.querySelector('h1.title').textContent).toContain(appServiceStub.title);
-  });
-
-  it('should render desc in a p.desc tag', () => {
-    expect(element.querySelector('p.desc').textContent).toContain(app.desc);
-  });
 });
