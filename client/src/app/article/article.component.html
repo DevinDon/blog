@@ -1,1 +1,38 @@
-<p>article works!</p>
+<mat-card *ngFor="let article of articles; trackBy: trackByFn">
+
+  <mat-card-header>
+    <mat-card-title>{{ article.title }}</mat-card-title>
+    <mat-card-subtitle>
+      <span class="author">{{ article.author }}</span>
+      <span class="split">|</span>
+      <span class="date">{{ article.date | date:"yy-MM-dd" }}</span>
+    </mat-card-subtitle>
+    <img mat-card-avatar src="assets/head-1.png" [alt]="article.author">
+  </mat-card-header>
+
+  <mat-card-content>
+    <ng-container *ngIf="article.image">
+      <img mat-card-image [src]="article.image" [alt]="article.title">
+    </ng-container>
+    <p class="summary">{{ article.summary }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button>
+      <mat-icon>thumb_up</mat-icon>
+      <span class="split"></span>
+      <span>133</span>
+    </button>
+    <button mat-button>
+      <mat-icon>comment</mat-icon>
+      <span class="split"></span>
+      <span>5</span>
+    </button>
+    <button mat-button>
+      <mat-icon>share</mat-icon>
+      <span class="split"></span>
+      <span>15</span>
+    </button>
+  </mat-card-actions>
+
+</mat-card>

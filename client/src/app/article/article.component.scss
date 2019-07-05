@@ -1,0 +1,15 @@
+.mat-card {
+  margin: 1rem 0;
+  .split {
+    margin: 0 0.5rem;
+  }
+  > .mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    > button {
+      flex-grow: 1;
+    }
+  }
+}
