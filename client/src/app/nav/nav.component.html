@@ -1,1 +1,10 @@
-<p>nav works!</p>
+<div id="nav">
+  <h2>{{ app.title }}</h2>
+  <ul>
+    <li *ngFor="let route of routes">
+      <a mat-button [routerLink]="[route.link]">
+        <mat-icon>{{ route.icon }}</mat-icon><span class="text">{{ route.text }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
