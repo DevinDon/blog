@@ -15,6 +15,7 @@ interface Route {
 export class NavComponent implements OnInit {
 
   public routes: Route[] = [
+    { icon: 'home', link: '/', text: '首页' },
     { icon: 'library_books', link: '/article', text: '文字' },
     { icon: 'photo_library', link: '/image', text: '影像' },
     { icon: 'library_music', link: '/song', text: '声音' },
