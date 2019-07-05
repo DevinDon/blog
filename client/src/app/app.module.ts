@@ -8,6 +8,7 @@ import { ImageComponent } from './image/image.component';
 import { MaterialModule } from './module/material.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
 import { SharedModule } from './module/shared.module';
+import { NavComponent } from './nav/nav.component';
 import { SongComponent } from './song/song.component';
 import { VideoComponent } from './video/video.component';
 
@@ -19,7 +20,8 @@ import { VideoComponent } from './video/video.component';
     ImageComponent,
     ArticleComponent,
     SongComponent,
-    VideoComponent
+    VideoComponent,
+    NavComponent
   ],
   imports: [
     SharedModule,
