@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class AppService {
 
-  public title = 'Template';
+  public title = '夜寒苏的窗台';
+
+  public name = '夜寒苏';
 
   constructor() { }
 
