@@ -27,7 +27,6 @@ export class AppService implements OnDestroy {
         router.events.subscribe(event => {
           if (event instanceof NavigationEnd) {
             this.animation = event.urlAfterRedirects.slice(1);
-            console.log(this.animation);
           }
         })
       );
