@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { destory } from './other/destory';
 
 @Injectable({
@@ -8,7 +9,11 @@ import { destory } from './other/destory';
 })
 export class AppService implements OnDestroy {
 
-  public animation = -1;
+  public animation = 'init';
+
+  public info = {
+    isDesktop: window.innerWidth > 599
+  };
 
   public subscriptions: Subscription[] = [];
 
@@ -21,9 +26,17 @@ export class AppService implements OnDestroy {
       .push(
         router.events.subscribe(event => {
           if (event instanceof NavigationEnd) {
-            this.animation = event.id;
+            this.animation = event.urlAfterRedirects.slice(1);
+            console.log(this.animation);
           }
         })
+      );
+    this.subscriptions
+      .push(
+        fromEvent(window, 'resize')
+          .pipe(
+            debounceTime(100)
+          ).subscribe(() => this.info.isDesktop = window.innerWidth > 599)
       );
   }
 
