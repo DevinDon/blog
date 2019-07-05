@@ -4,7 +4,6 @@ import { AboutComponent } from '../about/about.component';
 import { ArticleComponent } from '../article/article.component';
 import { HomeComponent } from '../home/home.component';
 import { ImageComponent } from '../image/image.component';
-import { NavComponent } from '../nav/nav.component';
 import { SongComponent } from '../song/song.component';
 import { VideoComponent } from '../video/video.component';
 
@@ -13,7 +12,6 @@ export const routes: Route[] = [
   { path: 'about', component: AboutComponent },
   { path: 'article', component: ArticleComponent },
   { path: 'image', component: ImageComponent },
-  { path: 'nav', component: NavComponent },
   { path: 'song', component: SongComponent },
   { path: 'video', component: VideoComponent }
 ];
