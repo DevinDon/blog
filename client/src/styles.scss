@@ -22,18 +22,18 @@ body {
       position: absolute;
       left: 50%;
       background-color: #fafafa;
-      min-width: 300rem;
-      min-height: 300rem;
+      min-width: 350rem;
+      min-height: 350rem;
       animation-name: rotate;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
     }
     &::before {
       right: 0;
-      bottom: 2rem;
+      bottom: -1rem;
       opacity: 1;
-      border-radius: 47%;
-      animation-duration: 15s;
+      border-radius: 48%;
+      animation-duration: 20s;
     }
   }
 }
