@@ -1,2 +1,2 @@
 docker build -t blog-server server
-docker stack deploy -c docker-compose.yml application
+docker stack deploy -c docker-compose.yml blog
