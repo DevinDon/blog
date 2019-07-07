@@ -3,7 +3,7 @@ export interface Content<T = any> {
   author: string;
   date: number | Date;
   image?: string;
-  /** Summary or content. */
+  summary: string;
   text: string;
   addition?: T;
 }
