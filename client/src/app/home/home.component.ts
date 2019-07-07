@@ -8,7 +8,7 @@ import { AppService } from '../app.service';
 })
 export class HomeComponent implements OnInit {
 
-  public desc = '大道虽简，知易行难。';
+  public motto = '大道虽简，知易行难。';
 
   constructor(
     public app: AppService
