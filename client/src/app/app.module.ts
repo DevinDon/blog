@@ -3,34 +3,28 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-import { ArticleComponent } from './content/article/article.component';
-import { ContentComponent } from './content/content.component';
+import { ContentModule } from './content/content.module';
 import { HomeComponent } from './home/home.component';
-import { ImageComponent } from './content/image/image.component';
 import { MaterialModule } from './module/material.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
 import { SharedModule } from './module/shared.module';
 import { NavComponent } from './nav/nav.component';
-import { SongComponent } from './content/song/song.component';
-import { VideoComponent } from './content/video/video.component';
 
 @NgModule({
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent
+  ],
   declarations: [
     AppComponent,
     AboutComponent,
-    ImageComponent,
-    ArticleComponent,
-    SongComponent,
-    VideoComponent,
     NavComponent,
-    HomeComponent,
-    ContentComponent
+    HomeComponent
   ],
   imports: [
     SharedModule,
     RoutingModule,
-    MaterialModule
+    MaterialModule,
+    ContentModule
   ],
   providers: [
     AppService,
