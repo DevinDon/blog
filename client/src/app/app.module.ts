@@ -3,16 +3,16 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-import { ArticleComponent } from './article/article.component';
+import { ArticleComponent } from './content/article/article.component';
 import { ContentComponent } from './content/content.component';
 import { HomeComponent } from './home/home.component';
-import { ImageComponent } from './image/image.component';
+import { ImageComponent } from './content/image/image.component';
 import { MaterialModule } from './module/material.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
 import { SharedModule } from './module/shared.module';
 import { NavComponent } from './nav/nav.component';
-import { SongComponent } from './song/song.component';
-import { VideoComponent } from './video/video.component';
+import { SongComponent } from './content/song/song.component';
+import { VideoComponent } from './content/video/video.component';
 
 @NgModule({
   bootstrap: [AppComponent],

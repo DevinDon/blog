@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, DetachedRouteHandle, Route, RouteReuseStrategy, RouterModule } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
-import { ArticleComponent } from '../article/article.component';
+import { ArticleComponent } from '../content/article/article.component';
+import { ImageComponent } from '../content/image/image.component';
+import { SongComponent } from '../content/song/song.component';
+import { VideoComponent } from '../content/video/video.component';
 import { HomeComponent } from '../home/home.component';
-import { ImageComponent } from '../image/image.component';
-import { SongComponent } from '../song/song.component';
-import { VideoComponent } from '../video/video.component';
 
 export const routes: Route[] = [
   { path: '', component: HomeComponent },
