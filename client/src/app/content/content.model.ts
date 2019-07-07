@@ -4,6 +4,6 @@ export interface Content<T = any> {
   date: number | Date;
   image?: string;
   summary: string;
-  text: string;
+  content: string;
   addition?: T;
 }

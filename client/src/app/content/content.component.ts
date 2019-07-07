@@ -15,7 +15,7 @@ export class ContentComponent implements OnInit {
       date: Date.now(),
       image: 'assets/background-light.png',
       summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      text: ''
+      content: ''
     },
     {
       title: '测试标题',
@@ -23,14 +23,14 @@ export class ContentComponent implements OnInit {
       date: new Date('2010-03-21'),
       image: 'assets/background-light.png',
       summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      text: ''
+      content: ''
     },
     {
       title: '测试标题',
       author: '夜寒苏',
       date: new Date('2000-02-21'),
       summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      text: ''
+      content: ''
     },
     {
       title: '测试标题',
@@ -38,14 +38,14 @@ export class ContentComponent implements OnInit {
       date: Date.now(),
       image: 'assets/background-dark.png',
       summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      text: ''
+      content: ''
     },
     {
       title: '测试标题',
       author: '夜寒苏',
       date: new Date('2000-02-21'),
       summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      text: ''
+      content: ''
     },
     {
       title: '测试标题',
@@ -53,7 +53,7 @@ export class ContentComponent implements OnInit {
       date: new Date('2013-02-21'),
       image: 'assets/background-dark.png',
       summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      text: ''
+      content: ''
     },
   ];
 
