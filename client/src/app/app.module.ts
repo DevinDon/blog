@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 import { ArticleComponent } from './article/article.component';
+import { ContentComponent } from './content/content.component';
 import { HomeComponent } from './home/home.component';
 import { ImageComponent } from './image/image.component';
 import { MaterialModule } from './module/material.module';
@@ -25,7 +26,8 @@ import { VideoComponent } from './video/video.component';
     VideoComponent,
     NavComponent,
     HomeComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    ContentComponent
   ],
   imports: [
     SharedModule,
