@@ -3,7 +3,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 import { ArticleComponent } from './article/article.component';
 import { ContentComponent } from './content/content.component';
 import { HomeComponent } from './home/home.component';
@@ -26,7 +25,6 @@ import { VideoComponent } from './video/video.component';
     VideoComponent,
     NavComponent,
     HomeComponent,
-    ArticleDetailComponent,
     ContentComponent
   ],
   imports: [
