@@ -3,6 +3,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+import { CategoryComponent } from './category/category.component';
 import { ContentModule } from './content/content.module';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './module/material.module';
@@ -18,7 +19,8 @@ import { NavComponent } from './nav/nav.component';
     AppComponent,
     AboutComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    CategoryComponent
   ],
   imports: [
     SharedModule,
