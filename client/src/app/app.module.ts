@@ -10,6 +10,7 @@ import { MaterialModule } from './module/material.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
 import { SharedModule } from './module/shared.module';
 import { NavComponent } from './nav/nav.component';
+import { WaveComponent } from './wave/wave.component';
 
 @NgModule({
   bootstrap: [
@@ -20,7 +21,8 @@ import { NavComponent } from './nav/nav.component';
     AboutComponent,
     NavComponent,
     HomeComponent,
-    CategoryComponent
+    CategoryComponent,
+    WaveComponent
   ],
   imports: [
     SharedModule,
