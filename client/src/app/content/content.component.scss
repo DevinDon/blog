@@ -1,35 +1,51 @@
-.mat-card {
-  border-radius: 0;
-  margin: 0 0 1rem 0;
+.card {
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0px -2px 15px -8px rgba(0, 0, 0, 0.3), 0px 2px 15px -8px rgba(0, 0, 0, 0.3);
   .split {
     margin: 0 0.5rem;
   }
-  > .mat-card-header {
-    .mat-card-title {
-      margin: 0;
-    }
-    .mat-card-subtitle {
-      margin: 0;
-    }
-  }
-  .mat-card-content {
-    margin: 0.5rem 0;
-    .mat-card-image {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    > :first-child {
-      margin-top: 0;
-    }
-  }
-  > .mat-card-actions {
+  > .header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    > button {
-      flex-basis: 10rem;
-      flex-grow: 1;
+    padding: 0.5rem 0;
+    > .picture {
+      margin: 0 1rem;
+      width: 3rem;
+    }
+    > .text {
+      > * {
+        margin: 0;
+      }
+      > .subtitle {
+        font-size: small;
+        font-weight: normal;
+        color: gray;
+      }
+    }
+  }
+  > .content {
+    padding: 0.5rem 0;
+    > .image {
+      width: 100vw;
+    }
+    > .summary {
+      margin: 0.5rem;
+      font-size: small;
+    }
+  }
+  > .footer {
+    padding: 0.5rem;
+    > .action {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      > button {
+        flex-basis: 10rem;
+        flex-grow: 1;
+      }
     }
   }
 }
