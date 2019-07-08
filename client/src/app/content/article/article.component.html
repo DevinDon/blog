@@ -1,1 +1,16 @@
-<p>Article works.</p>
+<ng-container *ngIf="article && article.content; else loadingAllTemplate">
+  <article [@article]="article && article.content">
+    <h3 class="title">{{ article.title }}</h3>
+    <h4 class="subtitle">
+      <span class="author">{{ article.author }}</span>
+      <span class="split">|</span>
+      <span class="date">{{ article.date | date:"yy-MM-dd" }}</span>
+    </h4>
+    <section class="content">{{ article.content }}</section>
+  </article>
+</ng-container>
+<ng-template #loadingAllTemplate>
+  <div class="loading" [@article]="article && article.content">
+    <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</ng-template>
