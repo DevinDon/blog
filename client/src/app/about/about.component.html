@@ -1,3 +1,35 @@
-<p>About Component</p>
+<div class="window">
+
+  <h1 class="title">关于我</h1>
+
+  <p class="motto">{{ mottos[0] }}</p>
+
+  <div class="link">
+    <a mat-button><img src="assets/github.png" alt="GitHub"></a>
+    <a mat-button><img src="assets/email.png" alt="Email"></a>
+    <a mat-button><img src="assets/github.png" alt="GitHub"></a>
+    <a mat-button><img src="assets/github.png" alt="GitHub"></a>
+    <a mat-button><img src="assets/github.png" alt="GitHub"></a>
+  </div>
+
+  <button mat-icon-button class="down">
+    <mat-icon>arrow_downward</mat-icon>
+  </button>
+
+</div>
+
+<ul>
+  <li *ngFor="let event of events">
+    <div class="line"></div>
+    <span class="date">{{ event.date | date:"yyyy-MM-dd" }}</span>
+    <h4 class="title">{{ event.title }}</h4>
+    <p class="content">{{ event.content }}</p>
+  </li>
+</ul>
+
+<div class="last">
+  <p>若你听见我的哽咽声，请你捂上耳朵。</p>
+  <p>让我一直孤傲，一直漂亮。</p>
+</div>
 
 <app-wave [show]="true"></app-wave>
