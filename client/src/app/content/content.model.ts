@@ -1,6 +1,9 @@
+export type Category = 'article' | 'image' | 'question' | 'song' | 'video';
+
 export interface Content<T = any> {
   title: string;
   author: string;
+  category: Category;
   date: number | Date;
   image?: string;
   summary: string;
