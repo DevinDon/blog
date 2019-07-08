@@ -8,6 +8,7 @@ import { ImageComponent } from './image/image.component';
 import { QuestionComponent } from './question/question.component';
 import { SongComponent } from './song/song.component';
 import { VideoComponent } from './video/video.component';
+import { RoutingModule } from '../module/routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VideoComponent } from './video/video.component';
   ],
   imports: [
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    RoutingModule
   ],
   providers: [
     ContentService
