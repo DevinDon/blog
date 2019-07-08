@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Category, Content } from './content.model';
+import { Content } from './content.model';
 
 @Component({
   selector: 'app-content',

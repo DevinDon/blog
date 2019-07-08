@@ -5,6 +5,16 @@
   .split {
     margin: 0 0.5rem;
   }
+  > .category {
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: small;
+    color: gray;
+    &::before,
+    &::after {
+      content: "-";
+    }
+  }
   > .header {
     display: flex;
     flex-direction: row;
