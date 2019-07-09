@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -24,6 +25,8 @@ export class AppService implements OnDestroy {
   public title = '夜寒苏的窗台';
 
   constructor(
+    public bar: MatSnackBar,
+    public dialog: MatDialog,
     public router: Router
   ) {
     // routing hook
