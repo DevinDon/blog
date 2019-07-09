@@ -10,6 +10,7 @@
     <section class="content">{{ article.content }}</section>
   </article>
 </ng-container>
+
 <ng-template #loadingAllTemplate>
   <div class="loading" [@article]="article && article.content">
     <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
