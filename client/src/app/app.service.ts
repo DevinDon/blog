@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { fromEvent, Subscription, generate, of } from 'rxjs';
+import { debounceTime, concatMap, delay } from 'rxjs/operators';
 import { destory } from './other/destory';
 
 @Injectable({
@@ -52,18 +52,34 @@ export class AppService implements OnDestroy {
       );
   }
 
-  scrollTo() {
+  scrollToTop(height = 0) {
+    generate(
+      window.pageYOffset,
+      y => y > height,
+      y => y - 0.05 * y - 8
+    ).pipe(
+      concatMap(y => of(y).pipe(delay(16.7)))
+    ).subscribe(y => window.scrollTo(0, y));
+  }
 
+  scrollToBottom(height = document.body.scrollHeight) {
+    generate(
+      height,
+      y => y > 0,
+      y => y - 0.015 * y - 8
+    ).pipe(
+      concatMap(y => of(y).pipe(delay(16.7)))
+    ).subscribe(y => window.scrollTo(0, height - y));
   }
 
   scrollToState() {
     setTimeout(() => {
       if (this.offset[location.pathname]) {
-        window.scrollTo(this.offset[location.pathname].x, this.offset[location.pathname].y);
+        this.scrollToBottom(this.offset[location.pathname].y);
       } else {
-        window.scrollTo(0, 0);
+        this.scrollToBottom(0);
       }
-    }, 100);
+    }, 0);
   }
 
   ngOnDestroy() {
