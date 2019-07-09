@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Category {
+  image: string;
+  link: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -7,18 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
+  public categories: Category[] = [
+    { image: 'assets/bg-1.jpg', link: '/content/article', name: '文字' },
+    { image: 'assets/bg-2.jpg', link: '/content/image', name: '意境' },
+    { image: 'assets/bg-3.jpg', link: '/content/song', name: '音乐' },
+    { image: 'assets/bg-4.jpg', link: '/content/video', name: '影视' },
+    { image: 'assets/bg-5.jpg', link: '/content/question', name: '解惑' }
+  ];
+
   constructor() { }
 
   ngOnInit() { }
 
 }
-
-  // public routes: Route[] = [
-  //   { icon: 'home', link: '/', text: '首页' },
-  //   { icon: 'library_books', link: '/article', text: '文字' },
-  //   { icon: 'photo_library', link: '/image', text: '意境' },
-  //   { icon: 'library_music', link: '/song', text: '音乐' },
-  //   { icon: 'video_library', link: '/video', text: '影视' },
-  //   { icon: 'help', link: '/video', text: '解惑' },
-  //   { icon: 'library_add', link: '/about', text: '关于' }
-  // ];
