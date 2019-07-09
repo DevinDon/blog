@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { destory } from './other/destory';
@@ -10,6 +10,10 @@ import { destory } from './other/destory';
 export class AppService implements OnDestroy {
 
   public animation = 'init';
+
+  public histories: string[] = [];
+
+  public offset: { [index: string]: { x: number, y: number } } = {};
 
   public info = {
     isDesktop: window.innerWidth > 599
@@ -22,14 +26,20 @@ export class AppService implements OnDestroy {
   constructor(
     public router: Router
   ) {
+    // routing hook
     this.subscriptions
       .push(
         router.events.subscribe(event => {
+          if (event instanceof NavigationStart) {
+            this.offset[this.histories.pop() || ''] = { x: window.pageXOffset, y: window.pageYOffset };
+            this.histories.push(event.url);
+          }
           if (event instanceof NavigationEnd) {
-            this.animation = event.urlAfterRedirects.slice(1);
+            this.animation = event.urlAfterRedirects;
           }
         })
       );
+    // window resize
     this.subscriptions
       .push(
         fromEvent(window, 'resize')
@@ -37,6 +47,20 @@ export class AppService implements OnDestroy {
             debounceTime(100)
           ).subscribe(() => this.info.isDesktop = window.innerWidth > 599)
       );
+  }
+
+  scrollTo() {
+
+  }
+
+  scrollToState() {
+    setTimeout(() => {
+      if (this.offset[location.pathname]) {
+        window.scrollTo(this.offset[location.pathname].x, this.offset[location.pathname].y);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }, 100);
   }
 
   ngOnDestroy() {
