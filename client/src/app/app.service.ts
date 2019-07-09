@@ -75,9 +75,9 @@ export class AppService implements OnDestroy {
   scrollToState() {
     setTimeout(() => {
       if (this.offset[location.pathname]) {
-        this.scrollToBottom(this.offset[location.pathname].y);
+        window.scrollTo(0, this.offset[location.pathname].y);
       } else {
-        this.scrollToBottom(0);
+        window.scrollTo(0, 0);
       }
     }, 0);
   }
