@@ -11,6 +11,7 @@ import { RouteReuseHandler, RoutingModule } from './module/routing.module';
 import { SharedModule } from './module/shared.module';
 import { NavComponent } from './nav/nav.component';
 import { WaveComponent } from './wave/wave.component';
+import { AboutContactComponent } from './about/about-contact/about-contact.component';
 
 @NgModule({
   bootstrap: [
@@ -22,7 +23,11 @@ import { WaveComponent } from './wave/wave.component';
     NavComponent,
     HomeComponent,
     CategoryComponent,
-    WaveComponent
+    WaveComponent,
+    AboutContactComponent
+  ],
+  entryComponents: [
+    AboutContactComponent,
   ],
   imports: [
     SharedModule,
