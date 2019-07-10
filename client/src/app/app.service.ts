@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { fromEvent, Subscription, generate, of } from 'rxjs';
-import { debounceTime, concatMap, delay } from 'rxjs/operators';
+import { fromEvent, generate, of, Subscription } from 'rxjs';
+import { concatMap, debounceTime, delay } from 'rxjs/operators';
 import { destory } from './other/destory';
 
 @Injectable({
