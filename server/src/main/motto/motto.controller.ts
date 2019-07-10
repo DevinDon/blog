@@ -52,4 +52,13 @@ export class MottoController {
     });
   }
 
+  @GET('/more/{{total}}')
+  async getMoreByRandom(@PathVariable('total') total: number) {
+    const result = await this.service.getMoreByRandom(+total);
+    return response({
+      status: result.length > 0,
+      content: result
+    });
+  }
+
 }

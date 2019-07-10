@@ -34,4 +34,12 @@ export class MottoService {
       .getOne();
   }
 
+  getMoreByRandom(total: number): Promise<Motto[]> {
+    return MottoEntity.createQueryBuilder()
+      .select()
+      .orderBy('RANDOM()')
+      .take(total)
+      .getMany();
+  }
+
 }
