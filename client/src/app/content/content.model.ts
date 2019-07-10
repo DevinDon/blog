@@ -1,13 +1,12 @@
 export type Category = 'article' | 'image' | 'question' | 'song' | 'video';
 
-export interface Content<T = any> {
+export interface Article {
   id: number;
   title: string;
   author: string;
-  category: Category;
-  date: number | Date;
+  date: number;
   image?: string;
   summary: string;
-  content: string;
-  addition?: T;
+  text: string;
+  html: string;
 }

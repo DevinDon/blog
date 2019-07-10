@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Content } from './content.model';
+import { Article } from './content.model';
+import { ContentService } from './content.service';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-content',
@@ -9,78 +11,34 @@ import { Content } from './content.model';
 })
 export class ContentComponent implements OnInit {
 
-  public contents: Content[] = [
-    {
-      id: 0,
-      title: '测试标题',
-      author: '夜寒苏',
-      category: 'article',
-      date: Date.now(),
-      image: 'assets/background-light.png',
-      summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      content: ''
-    },
-    {
-      id: 1,
-      title: '测试标题',
-      author: '夜寒苏',
-      category: 'image',
-      date: new Date('2010-03-21'),
-      image: 'assets/background-light.png',
-      summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      content: ''
-    },
-    {
-      id: 2,
-      title: '测试标题',
-      author: '夜寒苏',
-      category: 'article',
-      date: new Date('2000-02-21'),
-      summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      content: ''
-    },
-    {
-      id: 3,
-      title: '测试标题',
-      author: '夜寒苏',
-      category: 'video',
-      date: Date.now(),
-      image: 'assets/background-dark.png',
-      summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      content: ''
-    },
-    {
-      id: 4,
-      title: '测试标题',
-      author: '夜寒苏',
-      category: 'song',
-      date: new Date('2000-02-21'),
-      summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      content: ''
-    },
-    {
-      id: 5,
-      title: '测试标题',
-      author: '夜寒苏',
-      category: 'question',
-      date: new Date('2013-02-21'),
-      image: 'assets/background-dark.png',
-      summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-      content: ''
-    },
-  ];
+  public contents: Article[] = [];
 
   constructor(
-    public router: Router
+    public app: AppService,
+    public router: Router,
+    public service: ContentService
   ) { }
 
-  ngOnInit() { }
-
-  openDetail(content: Content) {
-    this.router.navigate([content.category, content.id]);
+  ngOnInit() {
+    this.getMore();
   }
 
-  trackByFn(index: number, item: Content) {
+  getMore() {
+    this.service.getMoreArticlesByRandom(7).subscribe(result => {
+      if (result.status) {
+        this.contents = result.content;
+      } else {
+        this.app.bar.open('无法获取数据，请稍后重试。', '确认');
+      }
+    });
+  }
+
+  openDetail(content: Article) {
+    // this.router.navigate([content.category, content.id]);
+    this.router.navigate(['article', content.id]);
+  }
+
+  trackByFn(index: number, item: Article) {
     return item.date;
   }
 
