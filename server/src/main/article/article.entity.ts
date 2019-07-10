@@ -9,7 +9,8 @@ export interface Article {
   date: number;
   image?: string;
   summary: string;
-  content: string;
+  text: string;
+  html: string;
 }
 
 @Entity('article')
@@ -35,7 +36,14 @@ export class ArticleEntity extends BaseEntity implements Article {
   @Column()
   summary!: string;
 
-  @Column()
-  content!: string;
+  @Column({
+    type: 'text'
+  })
+  text!: string;
+
+  @Column({
+    type: 'text'
+  })
+  html!: string;
 
 }
