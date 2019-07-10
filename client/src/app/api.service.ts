@@ -1,5 +1,6 @@
-import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, isDevMode } from '@angular/core';
+import { BaseResponse } from './other/response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class ApiService {
   }
 
   get<T = any>(path: string) {
-    return this.http.get<T>(ApiService.HOST + path);
+    return this.http.get<BaseResponse<T>>(ApiService.HOST + path);
   }
 
   post<T = any>(path: string, data: any) {
-    return this.http.post<T>(ApiService.HOST + path, data);
+    return this.http.post<BaseResponse<T>>(ApiService.HOST + path, data);
   }
 
 }
