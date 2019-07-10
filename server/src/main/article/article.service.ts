@@ -12,14 +12,22 @@ export class ArticleService {
 
   }
 
-  getOneRecent() {
+  getOneByRecent() {
 
   }
 
-  getMoreRecent(total: number): Promise<Article[]> {
+  getMoreByRecent(total: number): Promise<Article[]> {
     return ArticleEntity.createQueryBuilder()
       .select()
       .orderBy({ date: 'DESC' })
+      .take(total)
+      .getMany();
+  }
+
+  getMoreByRandom(total: number): Promise<Article[]> {
+    return ArticleEntity.createQueryBuilder()
+      .select()
+      .orderBy('RANDOM()')
       .take(total)
       .getMany();
   }

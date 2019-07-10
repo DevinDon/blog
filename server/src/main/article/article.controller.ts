@@ -18,8 +18,17 @@ export class ArticleController {
   }
 
   @GET('/recent/{{total}}')
-  async getMoreRecent(@PathVariable('total') total: number) {
-    const result = await this.service.getMoreRecent(+total);
+  async getMoreByRecent(@PathVariable('total') total: number) {
+    const result = await this.service.getMoreByRecent(+total);
+    return response({
+      status: result.length > 0,
+      content: result
+    });
+  }
+
+  @GET('/random/{{total}}')
+  async getMoreByRandom(@PathVariable('total') total: number) {
+    const result = await this.service.getMoreByRandom(+total);
     return response({
       status: result.length > 0,
       content: result
