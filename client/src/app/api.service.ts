@@ -7,7 +7,7 @@ import { BaseResponse } from './other/response.model';
 })
 export class ApiService {
 
-  public static HOST = 'http://blog-server:8080';
+  public static HOST = 'http://blog.don.red/api';
 
   constructor(
     public http: HttpClient
