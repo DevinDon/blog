@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.api.get('/motto/more/10').subscribe(mottos => this.mottos = mottos);
+    this.api.get('/motto/more/10').subscribe(result => this.mottos = result.content);
     this.subscriptions.push(
       timer(5000, 5000)
         .subscribe(
