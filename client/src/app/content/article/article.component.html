@@ -1,18 +1,18 @@
-<ng-container *ngIf="article && article.text; else loadingAllTemplate">
+<ng-container *ngIf="article && article.html; else loadingAllTemplate">
   <img src="assets/background-dark.png" alt="Background">
-  <article [@article]="article && article.text">
+  <article [@article]="article && article.html">
     <h3 class="title">{{ article.title }}</h3>
     <h4 class="subtitle">
       <span class="author">{{ article.author }}</span>
       <span class="split">|</span>
       <span class="date">{{ article.date | date:"yy-MM-dd" }}</span>
     </h4>
-    <section class="content">{{ article.text }}</section>
+    <section class="content" [innerHTML]="article.html"></section>
   </article>
 </ng-container>
 
 <ng-template #loadingAllTemplate>
-  <div class="loading" [@article]="article && article.text">
+  <div class="loading" [@article]="article && article.html">
     <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
   </div>
 </ng-template>
