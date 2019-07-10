@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Content } from '../content.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Article } from '../content.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { AppService } from 'src/app/app.service';
+import { ContentService } from '../content.service';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { destory } from 'src/app/other/destory';
 
 @Component({
   selector: 'app-article',
@@ -15,43 +20,36 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ]
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnInit, OnDestroy {
 
-  public article: Content;
+  public article: Article;
 
-  constructor() { }
+  private subscriptions: Subscription[] = [];
+
+  constructor(
+    public app: AppService,
+    public route: ActivatedRoute,
+    public service: ContentService
+  ) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.article = {
-        id: 0,
-        title: '测试标题',
-        author: '夜寒苏',
-        category: 'article',
-        date: Date.now(),
-        image: 'assets/background-light.png',
-        summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-        content: undefined as any
-      };
-    }, 1500);
-    setTimeout(() => {
-      this.article = {
-        id: 0,
-        title: '测试标题',
-        author: '夜寒苏',
-        category: 'article',
-        date: Date.now(),
-        image: 'assets/background-light.png',
-        summary: '这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。这里是摘要。',
-        content: `内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
-        容内容内容内容内容内容内容内容内容内容`
-      };
-    }, 3000);
+    this.subscriptions.push(
+      this.route.paramMap.subscribe(v => {
+        const id = +v.get('id') || 0;
+        this.service.getOneArticleByID(id)
+          .subscribe(result => {
+            if (result.status) {
+              this.article = result.content;
+            } else {
+              this.app.bar.open('无法获取文章，请稍后重试。', '确认');
+            }
+          });
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    destory(this.subscriptions);
   }
 
 }
