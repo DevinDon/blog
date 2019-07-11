@@ -38,7 +38,7 @@ export class AboutComponent implements OnInit {
   ngOnInit() { }
 
   nextPage() {
-    window.scrollTo(0, window.innerHeight);
+    this.app.scrollToBottom(window.innerHeight);
   }
 
   openDialog(name: string) {
