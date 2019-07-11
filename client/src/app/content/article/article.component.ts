@@ -43,7 +43,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
               this.article = result.content;
               this.article.content = Marked(this.article.content);
             } else {
-              this.app.bar.open('无法获取文章，请稍后重试。', '确认');
+              this.app.openbar('无法获取文章，请稍后重试。');
             }
           });
       })

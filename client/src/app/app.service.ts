@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { fromEvent, generate, of, Subscription } from 'rxjs';
 import { concatMap, debounceTime, delay } from 'rxjs/operators';
@@ -80,6 +80,10 @@ export class AppService implements OnDestroy {
         window.scrollTo(0, 0);
       }
     }, 0);
+  }
+
+  openbar(message: string, action: string = '确认', config: MatSnackBarConfig = { duration: 3000 }) {
+    this.bar.open(message, action, config);
   }
 
   ngOnDestroy() {
