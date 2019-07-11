@@ -8,4 +8,6 @@ export interface Article {
   image?: string;
   summary: string;
   content: string;
+  liked: number;
+  shared: number;
 }

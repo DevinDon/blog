@@ -33,6 +33,32 @@ export class ContentComponent implements OnInit {
     });
   }
 
+  like(content: Article) {
+    this.service
+      .like(content.id)
+      .subscribe(result => {
+        if (result.status) {
+          this.app.bar.open('点赞成功。', '确认');
+          content.liked = result.content;
+        } else {
+          this.app.bar.open('无法点赞，请稍后重试。', '确认');
+        }
+      });
+  }
+
+  share(content: Article) {
+    this.service
+      .share(content.id)
+      .subscribe(result => {
+        if (result.status) {
+          this.app.bar.open('分享成功。', '确认');
+          content.shared = result.content;
+        } else {
+          this.app.bar.open('无法分享，请稍后重试。', '确认');
+        }
+      });
+  }
+
   openDetail(content: Article) {
     // this.router.navigate([content.category, content.id]);
     this.router.navigate(['article', content.id]);

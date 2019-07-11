@@ -21,20 +21,20 @@
 
   <section class="footer">
     <div class="action">
-      <button mat-button>
+      <button mat-button (click)="like(content)">
         <mat-icon>thumb_up</mat-icon>
         <span class="split"></span>
-        <span>{{ 90 + i * 10 }}</span>
+        <span>{{ content.liked }}</span>
       </button>
       <button mat-button>
         <mat-icon>comment</mat-icon>
         <span class="split"></span>
         <span>5</span>
       </button>
-      <button mat-button>
+      <button mat-button (click)="share(content)">
         <mat-icon>share</mat-icon>
         <span class="split"></span>
-        <span>15</span>
+        <span>{{ content.shared }}</span>
       </button>
     </div>
   </section>

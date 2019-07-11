@@ -19,4 +19,12 @@ export class ContentService {
     return this.api.get<Article[]>(`/article/random/${total}`);
   }
 
+  like(id: number) {
+    return this.api.patch<number>(`/article/like/${id}`, {});
+  }
+
+  share(id: number) {
+    return this.api.patch<number>(`/article/share/${id}`, {});
+  }
+
 }
