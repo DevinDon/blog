@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { fromEvent, generate, of, Subscription } from 'rxjs';
+import { NavigationStart, Router } from '@angular/router';
+import { fromEvent, generate, of, Subject, Subscription } from 'rxjs';
 import { concatMap, debounceTime, delay } from 'rxjs/operators';
 import { destory } from './other/destory';
 
@@ -10,14 +10,15 @@ import { destory } from './other/destory';
 })
 export class AppService implements OnDestroy {
 
-  public animation = 'init';
-
-  public histories: string[] = [];
-
-  public offset: { [index: string]: { x: number, y: number } } = {};
-
   public info = {
     isDesktop: window.innerWidth > 599
+  };
+
+  public status = {
+    loading: {
+      subjection: new Subject<number>(),
+      value: 0
+    }
   };
 
   public subscriptions: Subscription[] = [];
@@ -29,19 +30,6 @@ export class AppService implements OnDestroy {
     public dialog: MatDialog,
     public router: Router
   ) {
-    // routing hook
-    this.subscriptions
-      .push(
-        router.events.subscribe(event => {
-          if (event instanceof NavigationStart) {
-            this.offset[this.histories.pop() || ''] = { x: window.pageXOffset, y: window.pageYOffset };
-            this.histories.push(event.url);
-          }
-          if (event instanceof NavigationEnd) {
-            this.animation = event.urlAfterRedirects;
-          }
-        })
-      );
     // window resize
     this.subscriptions
       .push(
@@ -50,6 +38,19 @@ export class AppService implements OnDestroy {
             debounceTime(100)
           ).subscribe(() => this.info.isDesktop = window.innerWidth > 599)
       );
+    // loading status
+    this.subscriptions
+      .push(
+        this.status.loading.subjection.subscribe(v => this.status.loading.value += v)
+      );
+  }
+
+  busy() {
+    this.status.loading.subjection.next(1);
+  }
+
+  free() {
+    this.status.loading.subjection.next(-1);
   }
 
   scrollToTop(height = 0) {
@@ -72,17 +73,7 @@ export class AppService implements OnDestroy {
     ).subscribe(y => window.scrollTo(0, height - y));
   }
 
-  scrollToState() {
-    setTimeout(() => {
-      if (this.offset[location.pathname]) {
-        window.scrollTo(0, this.offset[location.pathname].y);
-      } else {
-        window.scrollTo(0, 0);
-      }
-    }, 0);
-  }
-
-  openbar(message: string, action: string = '确认', config: MatSnackBarConfig = { duration: 3000 }) {
+  openBar(message: string, action: string = '确认', config: MatSnackBarConfig = { duration: 3000 }) {
     this.bar.open(message, action, config);
   }
 

@@ -28,7 +28,7 @@ export class ContentComponent implements OnInit {
       if (result.status) {
         this.contents = result.content;
       } else {
-        this.app.openbar('无法获取数据，请稍后重试。');
+        this.app.openBar('无法获取数据，请稍后重试。');
       }
     });
   }
@@ -38,10 +38,10 @@ export class ContentComponent implements OnInit {
       .like(content.id)
       .subscribe(result => {
         if (result.status) {
-          this.app.openbar('点赞成功。');
+          this.app.openBar('点赞成功。');
           content.liked = result.content;
         } else {
-          this.app.openbar('无法点赞，请稍后重试。');
+          this.app.openBar('无法点赞，请稍后重试。');
         }
       });
   }
@@ -51,10 +51,10 @@ export class ContentComponent implements OnInit {
       .share(content.id)
       .subscribe(result => {
         if (result.status) {
-          this.app.openbar('分享成功。');
+          this.app.openBar('分享成功。');
           content.shared = result.content;
         } else {
-          this.app.openbar('无法分享，请稍后重试。');
+          this.app.openBar('无法分享，请稍后重试。');
         }
       });
   }
