@@ -11,16 +11,16 @@ import { HomeComponent } from '../home/home.component';
 import { CategoryComponent } from '../category/category.component';
 
 export const routes: Route[] = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'category', component: CategoryComponent },
-  { path: 'content', component: ContentComponent },
-  { path: 'content/:category', component: ContentComponent },
-  { path: 'article/:id', component: ArticleComponent },
-  { path: 'image/:id', component: ImageComponent },
-  { path: 'question/:id', component: QuestionComponent },
-  { path: 'song/:id', component: SongComponent },
-  { path: 'video/:id', component: VideoComponent }
+  { path: '', component: HomeComponent, data: { animation: '0' } },
+  { path: 'about', component: AboutComponent, data: { animation: '1' } },
+  { path: 'category', component: CategoryComponent, data: { animation: '1' } },
+  { path: 'content', component: ContentComponent, data: { animation: '1' } },
+  { path: 'content/:category', component: ContentComponent, data: { animation: '2' } },
+  { path: 'article/:id', component: ArticleComponent, data: { animation: '3', reload: true } },
+  { path: 'image/:id', component: ImageComponent, data: { animation: '3', reload: true } },
+  { path: 'question/:id', component: QuestionComponent, data: { animation: '3', reload: true } },
+  { path: 'song/:id', component: SongComponent, data: { animation: '3', reload: true } },
+  { path: 'video/:id', component: VideoComponent, data: { animation: '3', reload: true } }
 ];
 
 @NgModule({

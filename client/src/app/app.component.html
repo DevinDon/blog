@@ -6,8 +6,8 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div [@routing]="app.animation">
-      <router-outlet></router-outlet>
+    <div [@routing]="outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']">
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </mat-sidenav-content>
 
