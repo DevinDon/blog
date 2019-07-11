@@ -2,10 +2,13 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export interface Comment {
   id: number;
-  user?: number;
-  /** 回复的评论. */
-  reply?: number;
   content: string;
+  date: number;
+  disliked: number;
+  item: number;
+  liked: number;
+  reply?: number;
+  user: number;
 }
 
 @Entity('comment')
@@ -14,10 +17,24 @@ export class CommentEntity extends BaseEntity implements Comment {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Column()
+  content!: string;
+
+  @Column()
+  date!: number;
+
+  @Column()
+  disliked!: number;
+
   @Column({
-    nullable: true
+    default: 0
   })
-  user?: number;
+  item!: number;
+
+  @Column({
+    default: 0
+  })
+  liked!: number;
 
   @Column({
     nullable: true
@@ -25,6 +42,6 @@ export class CommentEntity extends BaseEntity implements Comment {
   reply?: number;
 
   @Column()
-  content!: string;
+  user!: number;
 
 }
