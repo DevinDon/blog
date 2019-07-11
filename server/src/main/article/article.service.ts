@@ -16,6 +16,24 @@ export class ArticleService {
 
   }
 
+  async like(id: number) {
+    await ArticleEntity.createQueryBuilder()
+      .update()
+      .set({ liked: () => '"liked" + 1' })
+      .where('id = :id', { id })
+      .execute();
+    return ArticleEntity.findOne(id).then(article => article!.liked);
+  }
+
+  async share(id: number) {
+    await ArticleEntity.createQueryBuilder()
+      .update()
+      .set({ shared: () => '"shared" + 1' })
+      .where('id = :id', { id })
+      .execute();
+    return ArticleEntity.findOne(id).then(article => article!.shared);
+  }
+
   getMoreByRecent(total: number): Promise<Article[]> {
     return ArticleEntity.createQueryBuilder()
       .select()

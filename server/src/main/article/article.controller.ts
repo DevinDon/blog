@@ -1,4 +1,4 @@
-import { Controller, GET, Inject, PathVariable } from '@rester/core';
+import { Controller, GET, Inject, PathVariable, PUT, PATCH } from '@rester/core';
 import { response } from '../model/response.model';
 import { ArticleService } from './article.service';
 
@@ -31,6 +31,24 @@ export class ArticleController {
     const result = await this.service.getMoreByRandom(+total);
     return response({
       status: result.length > 0,
+      content: result
+    });
+  }
+
+  @PATCH('like/{{id}}')
+  async like(@PathVariable('id') id: number) {
+    const result = await this.service.like(+id);
+    return response({
+      status: result > 0,
+      content: result
+    });
+  }
+
+  @PATCH('share/{{id}}')
+  async share(@PathVariable('id') id: number) {
+    const result = await this.service.share(+id);
+    return response({
+      status: result > 0,
       content: result
     });
   }
