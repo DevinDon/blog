@@ -6,7 +6,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div [@routing]="app.animation" (@routing.done)="app.scrollToState()">
+    <div [@routing]="app.animation">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
