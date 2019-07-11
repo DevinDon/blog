@@ -17,6 +17,7 @@ export class AppService implements OnDestroy {
   public status = {
     loading: {
       subjection: new Subject<number>(),
+      temp: 0,
       value: 0
     }
   };
@@ -41,16 +42,18 @@ export class AppService implements OnDestroy {
     // loading status
     this.subscriptions
       .push(
-        this.status.loading.subjection.subscribe(v => this.status.loading.value += v)
+        this.status.loading.subjection
+          .pipe(debounceTime(16))
+          .subscribe(v => this.status.loading.value = v)
       );
   }
 
   busy() {
-    this.status.loading.subjection.next(1);
+    this.status.loading.subjection.next(++this.status.loading.temp);
   }
 
   free() {
-    this.status.loading.subjection.next(-1);
+    this.status.loading.subjection.next(--this.status.loading.temp);
   }
 
   scrollToTop(height = 0) {
