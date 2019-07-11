@@ -6,6 +6,7 @@ import { ContentService } from '../content.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { destory } from 'src/app/other/destory';
+import * as Marked from 'marked';
 
 @Component({
   selector: 'app-article',
@@ -40,6 +41,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
           .subscribe(result => {
             if (result.status) {
               this.article = result.content;
+              this.article.content = Marked(this.article.content);
             } else {
               this.app.bar.open('无法获取文章，请稍后重试。', '确认');
             }
