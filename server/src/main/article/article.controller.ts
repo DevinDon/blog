@@ -35,7 +35,7 @@ export class ArticleController {
     });
   }
 
-  @PATCH('like/{{id}}')
+  @PATCH('/like/{{id}}')
   async like(@PathVariable('id') id: number) {
     const result = await this.service.like(+id);
     return response({
@@ -44,7 +44,7 @@ export class ArticleController {
     });
   }
 
-  @PATCH('share/{{id}}')
+  @PATCH('/share/{{id}}')
   async share(@PathVariable('id') id: number) {
     const result = await this.service.share(+id);
     return response({
