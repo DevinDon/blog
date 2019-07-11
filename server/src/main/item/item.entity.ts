@@ -2,29 +2,37 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export type Category = 'article' | 'image' | 'question' | 'song' | 'video';
 
-export interface Article {
+export interface Item {
   id: number;
-  title: string;
   author: string;
+  category: Category;
+  content: string;
   date: number;
   image?: string;
-  summary: string;
-  content: string;
   liked: number;
   shared: number;
+  summary: string;
+  title: string;
 }
 
 @Entity('article')
-export class ArticleEntity extends BaseEntity implements Article {
+export class ItemEntity extends BaseEntity implements Item {
 
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()
-  title!: string;
-
-  @Column()
   author!: string;
+
+  @Column({
+    type: 'varchar'
+  })
+  category!: Category;
+
+  @Column({
+    type: 'text'
+  })
+  content!: string;
 
   @Column()
   date!: number;
@@ -33,14 +41,6 @@ export class ArticleEntity extends BaseEntity implements Article {
     nullable: true
   })
   image?: string;
-
-  @Column()
-  summary!: string;
-
-  @Column({
-    type: 'text'
-  })
-  content!: string;
 
   @Column({
     default: 0
@@ -51,5 +51,11 @@ export class ArticleEntity extends BaseEntity implements Article {
     default: 0
   })
   shared!: number;
+
+  @Column()
+  summary!: string;
+
+  @Column()
+  title!: string;
 
 }
