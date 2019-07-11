@@ -14,7 +14,9 @@ import { AppService } from './app.service';
           ':leave',
           [
             style(
-              { opacity: 1, transition: 'none', zIndex: '0', minHeight: '100vh' }
+              {
+                opacity: 1, transition: 'none', zIndex: '0', minHeight: '100vh'
+              }
             )
           ],
           { optional: true }
@@ -23,7 +25,9 @@ import { AppService } from './app.service';
           ':enter',
           [
             style(
-              { position: 'fixed', top: 0, right: 0, opacity: 0, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1' }
+              {
+                position: 'absolute', top: 0, right: 0, opacity: 0, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1'
+              }
             )
           ],
           { optional: true }
@@ -42,7 +46,9 @@ import { AppService } from './app.service';
           ':enter',
           [
             style(
-              { opacity: 1, transition: 'none', zIndex: '0', minHeight: '100vh' }
+              {
+                opacity: 1, transition: 'none', zIndex: '0', minHeight: '100vh'
+              }
             )
           ],
           { optional: true }
@@ -51,7 +57,9 @@ import { AppService } from './app.service';
           ':leave',
           [
             style(
-              { position: 'fixed', top: 0, right: 0, opacity: 1, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1' }
+              {
+                position: 'absolute', top: 0, right: 0, opacity: 1, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1'
+              }
             )
           ],
           { optional: true }
