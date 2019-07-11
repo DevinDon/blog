@@ -3,7 +3,7 @@
   <div class="category">article</div>
 
   <section class="header">
-    <img class="picture" src="assets/head-1.png" [alt]="content.author">
+    <img class="picture" [src]="'assets/head/' + (i % 3 + 1) + '.png'" [alt]="content.author">
     <section class="text">
       <h3 class="title">{{ content.title }}</h3>
       <h4 class="subtitle">
@@ -15,9 +15,7 @@
   </section>
 
   <section class="content" (click)="openDetail(content)">
-    <ng-container *ngIf="content.image">
-      <img class="image" [src]="content.image" [alt]="content.title">
-    </ng-container>
+    <img class="image" [src]="content.image || 'assets/background/' + (i % 5 + 1) + '.png'" [alt]="content.title">
     <p class="summary">{{ content.summary }}</p>
   </section>
 
