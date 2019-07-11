@@ -7,6 +7,5 @@ export interface Article {
   date: number;
   image?: string;
   summary: string;
-  text: string;
-  html: string;
+  content: string;
 }
