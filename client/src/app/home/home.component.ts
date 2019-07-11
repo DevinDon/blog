@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ApiService } from '../api.service';
@@ -8,9 +9,20 @@ import { Motto } from '../other/response.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('motto', [
+      state('done', style({ opacity: 1 })),
+      state('change', style({ opacity: 0 })),
+      transition('* <=> *', animate(1000))
+    ])
+  ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  public state: 'done' | 'change' = 'done';
+
+  public content = '大道虽简，知易行难。';
 
   public motto: Motto = { id: 0, content: '大道虽简，知易行难。' };
 
@@ -26,9 +38,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.api.get<Motto[]>('/motto/more/10').subscribe(result => this.mottos = result.content);
     this.subscriptions.push(
-      timer(5000, 5000)
+      timer(5000, 10000)
         .subscribe(
-          () => this.motto = this.mottos[Math.floor(Math.random() * this.mottos.length)]
+          () => {
+            this.state = 'change';
+            this.motto = this.mottos[Math.floor(Math.random() * this.mottos.length)];
+          }
         )
     );
   }
