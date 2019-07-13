@@ -1,8 +1,8 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Category, Detail } from './detail.model';
+import { Category, Content } from './content.model';
 
-@Entity('detail')
-export class DetailEntity extends BaseEntity implements Detail {
+@Entity('content')
+export class ContentEntity extends BaseEntity implements Content {
 
   @PrimaryGeneratedColumn()
   id!: number;

@@ -1,6 +1,6 @@
 export type Category = 'article' | 'image' | 'question' | 'song' | 'video';
 
-export interface Detail {
+export interface Content {
   id: number;
   author: string;
   category: Category;

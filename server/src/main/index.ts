@@ -1,13 +1,13 @@
 import { CORSHandler, Rester } from '@rester/core';
 import { CommentView } from './comment/comment.view';
-import { DetailView } from './detail/detail.view';
+import { ContentView } from './content/content.view';
 import { MottoView } from './motto/motto.view';
 
 const rester = new Rester();
 
 rester
   .configViews
-  .add(CommentView, DetailView, MottoView)
+  .add(CommentView, ContentView, MottoView)
   .end();
 
 rester

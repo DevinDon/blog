@@ -1,12 +1,12 @@
-import { View, GET, Inject, PATCH, PathVariable } from '@rester/core';
+import { GET, Inject, PATCH, PathVariable, View } from '@rester/core';
 import { response } from '../model/response.model';
-import { DetailController } from './detail.controller';
+import { ContentController } from './content.controller';
 
-@View('/detail')
-export class DetailView {
+@View('/content')
+export class ContentView {
 
   @Inject()
-  private controller!: DetailController;
+  private controller!: ContentController;
 
   @GET('/{{id}}')
   async getOneByID(@PathVariable('id') id: number) {
