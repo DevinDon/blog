@@ -8,6 +8,7 @@ import { AppService } from 'src/app/app.service';
 import { destory } from 'src/app/other/destory';
 import { Article } from '../content.model';
 import { ContentService } from '../content.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article',
@@ -36,21 +37,23 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      this.route.paramMap.subscribe(v => {
-        const id = +v.get('id') || 0;
-        this.service.getOneArticleByID(id)
-          .subscribe(result => {
-            if (result.status) {
-              this.article = result.content;
-              this.article.content = Marked(
-                this.article.content,
-                { highlight: (code, language) => `<span class="language">${language}</span>` + highlightAuto(code).value }
-              );
-            } else {
-              this.app.openBar('无法获取文章，请稍后重试。');
-            }
-          });
-      })
+      this.route.paramMap
+        .pipe(delay(1000))
+        .subscribe(v => {
+          const id = +v.get('id') || 0;
+          this.service.getOneArticleByID(id)
+            .subscribe(result => {
+              if (result.status) {
+                this.article = result.content;
+                this.article.content = Marked(
+                  this.article.content,
+                  { highlight: (code, language) => `<span class="language">${language}</span>` + highlightAuto(code).value }
+                );
+              } else {
+                this.app.openBar('无法获取文章，请稍后重试。');
+              }
+            });
+        })
     );
   }
 
