@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Article } from '../content.model';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { AppService } from 'src/app/app.service';
-import { ContentService } from '../content.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { destory } from 'src/app/other/destory';
+import { highlightAuto } from 'highlight.js';
 import * as Marked from 'marked';
+import { Subscription } from 'rxjs';
+import { AppService } from 'src/app/app.service';
+import { destory } from 'src/app/other/destory';
+import { Article } from '../content.model';
+import { ContentService } from '../content.service';
 
 @Component({
   selector: 'app-article',
@@ -41,7 +42,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
           .subscribe(result => {
             if (result.status) {
               this.article = result.content;
-              this.article.content = Marked(this.article.content);
+              this.article.content = Marked(
+                this.article.content,
+                { highlight: (code, language) => `<span class="language">${language}</span>` + highlightAuto(code).value }
+              );
             } else {
               this.app.openBar('无法获取文章，请稍后重试。');
             }
