@@ -3,7 +3,7 @@ export interface Comment {
   content: string;
   date: number;
   disliked: number;
-  item: number;
+  belong: number;
   liked: number;
   reply?: number;
   user: number;

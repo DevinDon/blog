@@ -12,7 +12,7 @@ export class CommentController {
   }
 
   getAllAboutItem(item: number) {
-    return CommentEntity.find({ item });
+    return CommentEntity.find({ belong: item });
   }
 
   async like(id: number) {

@@ -14,7 +14,7 @@ export class CommentView {
     const result = await this.controller.add({
       content: comment.content,
       date: Date.now(),
-      item: comment.item,
+      belong: comment.belong,
       reply: comment.reply,
       user: 0,
       liked: 0,

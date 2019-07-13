@@ -19,7 +19,7 @@ export class CommentEntity extends BaseEntity implements Comment {
   @Column({
     default: 0
   })
-  item!: number;
+  belong!: number;
 
   @Column({
     default: 0
