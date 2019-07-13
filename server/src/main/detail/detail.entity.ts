@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Category, Detail } from './detail.model';
 
-@Entity('article')
+@Entity('detail')
 export class DetailEntity extends BaseEntity implements Detail {
 
   @PrimaryGeneratedColumn()
