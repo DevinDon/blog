@@ -12,19 +12,19 @@ export class ContentService {
   ) { }
 
   getOneArticleByID(id: number) {
-    return this.api.get<Article>(`/detail/${id}`);
+    return this.api.get<Article>(`/content/${id}`);
   }
 
   getMoreArticlesByRandom(total: number) {
-    return this.api.get<Article[]>(`/detail/random/${total}`);
+    return this.api.get<Article[]>(`/content/random/${total}`);
   }
 
   like(id: number) {
-    return this.api.patch<number>(`/detail/like/${id}`, {});
+    return this.api.patch<number>(`/content/like/${id}`, {});
   }
 
   share(id: number) {
-    return this.api.patch<number>(`/detail/share/${id}`, {});
+    return this.api.patch<number>(`/content/share/${id}`, {});
   }
 
 }
