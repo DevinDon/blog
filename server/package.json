@@ -16,7 +16,7 @@
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
     "dev": "bash -c \"MODE=DEV node -r ts-node/register src/main/index.ts\"",
     "dist": "bash -c \"MODE=PROD node dist\"",
-    "start": "npm run build && npm run dist",
+    "start": "npm run dev",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
   },
   "keywords": [
