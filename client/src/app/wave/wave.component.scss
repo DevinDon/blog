@@ -25,3 +25,9 @@
     animation-timing-function: linear;
   }
 }
+
+@media screen and (min-width: 600px) {
+  .wave {
+    width: 25rem;
+  }
+}
