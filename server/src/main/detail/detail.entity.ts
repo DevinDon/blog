@@ -1,22 +1,8 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-export type Category = 'article' | 'image' | 'question' | 'song' | 'video';
-
-export interface Item {
-  id: number;
-  author: string;
-  category: Category;
-  content: string;
-  date: number;
-  image?: string;
-  liked: number;
-  shared: number;
-  summary: string;
-  title: string;
-}
+import { Category, Detail } from './detail.model';
 
 @Entity('article')
-export class ItemEntity extends BaseEntity implements Item {
+export class DetailEntity extends BaseEntity implements Detail {
 
   @PrimaryGeneratedColumn()
   id!: number;

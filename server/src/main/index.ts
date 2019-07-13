@@ -1,13 +1,19 @@
 import { CORSHandler, Rester } from '@rester/core';
-import { CommentController } from './comment/comment.controller';
-import { ItemController } from './item/item.controller';
-import { MottoController } from './motto/motto.controller';
+import { CommentView } from './comment/comment.view';
+import { DetailView } from './detail/detail.view';
+import { MottoView } from './motto/motto.view';
 
-const rester = new Rester()
-  .configControllers
-  .add(CommentController, ItemController, MottoController)
-  .end()
+const rester = new Rester();
+
+rester
+  .configViews
+  .add(CommentView, DetailView, MottoView)
+  .end();
+
+rester
   .configHandlers
   .add(CORSHandler)
-  .end()
+  .end();
+
+rester
   .listen();

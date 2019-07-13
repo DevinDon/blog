@@ -1,38 +1,36 @@
-import { Controller, POST, Inject, PathVariable, RequestBody, GET } from '@rester/core';
-import { CommentService } from './comment.service';
-import { Comment } from './comment.entity';
-import { response } from '../model/response.model';
+import { Controller } from '@rester/core';
+import { CommentEntity } from './comment.entity';
+import { Comment } from './comment.model';
 
-@Controller('/comment')
+@Controller()
 export class CommentController {
 
-  @Inject()
-  private service!: CommentService;
-
-  @POST('/')
-  async add(@RequestBody() comment: Comment) {
-    const result = await this.service.add({
-      content: comment.content,
-      date: Date.now(),
-      item: comment.item,
-      reply: comment.reply,
-      user: 0,
-      liked: 0,
-      disliked: 0
-    });
-    return response({
-      status: Boolean(result),
-      content: result
-    });
+  add(comment: Partial<Comment>) {
+    return CommentEntity
+      .insert(comment)
+      .then(result => result.identifiers[0] ? comment : undefined);
   }
 
-  @GET('/{{item}}')
-  async get(@PathVariable('item') item: number) {
-    const result = await this.service.getAllAboutItem(item);
-    return response({
-      status: result.length > 0,
-      content: result
-    });
+  getAllAboutItem(item: number) {
+    return CommentEntity.find({ item });
+  }
+
+  async like(id: number) {
+    await CommentEntity.createQueryBuilder()
+      .update()
+      .set({ liked: () => '"liked" + 1' })
+      .where('id = :id', { id })
+      .execute();
+    return CommentEntity.findOne(id).then(comment => comment!.liked);
+  }
+
+  async dislike(id: number) {
+    await CommentEntity.createQueryBuilder()
+      .update()
+      .set({ disliked: () => '"disliked" + 1' })
+      .where('id = :id', { id })
+      .execute();
+    return CommentEntity.findOne(id).then(comment => comment!.disliked);
   }
 
 }

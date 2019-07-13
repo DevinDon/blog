@@ -1,16 +1,16 @@
-import { Controller, GET, Inject, PATCH, PathVariable } from '@rester/core';
+import { View, GET, Inject, PATCH, PathVariable } from '@rester/core';
 import { response } from '../model/response.model';
-import { ItemService } from './item.service';
+import { DetailController } from './detail.controller';
 
-@Controller('/article')
-export class ItemController {
+@View('/detail')
+export class DetailView {
 
   @Inject()
-  private service!: ItemService;
+  private controller!: DetailController;
 
   @GET('/{{id}}')
   async getOneByID(@PathVariable('id') id: number) {
-    const result = await this.service.getOneByID(+id);
+    const result = await this.controller.getOneByID(+id);
     return response({
       status: Boolean(result),
       content: result
@@ -19,7 +19,7 @@ export class ItemController {
 
   @GET('/recent/{{total}}')
   async getMoreByRecent(@PathVariable('total') total: number) {
-    const result = await this.service.getMoreByRecent(+total);
+    const result = await this.controller.getMoreByRecent(+total);
     return response({
       status: result.length > 0,
       content: result
@@ -28,7 +28,7 @@ export class ItemController {
 
   @GET('/random/{{total}}')
   async getMoreByRandom(@PathVariable('total') total: number) {
-    const result = await this.service.getMoreByRandom(+total);
+    const result = await this.controller.getMoreByRandom(+total);
     return response({
       status: result.length > 0,
       content: result
@@ -37,7 +37,7 @@ export class ItemController {
 
   @PATCH('/like/{{id}}')
   async like(@PathVariable('id') id: number) {
-    const result = await this.service.like(+id);
+    const result = await this.controller.like(+id);
     return response({
       status: result > 0,
       content: result
@@ -46,7 +46,7 @@ export class ItemController {
 
   @PATCH('/share/{{id}}')
   async share(@PathVariable('id') id: number) {
-    const result = await this.service.share(+id);
+    const result = await this.controller.share(+id);
     return response({
       status: result > 0,
       content: result

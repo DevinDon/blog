@@ -1,15 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-export interface Comment {
-  id: number;
-  content: string;
-  date: number;
-  disliked: number;
-  item: number;
-  liked: number;
-  reply?: number;
-  user: number;
-}
+import { Comment } from './comment.model';
 
 @Entity('comment')
 export class CommentEntity extends BaseEntity implements Comment {
