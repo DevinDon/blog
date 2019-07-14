@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Article } from './content.model';
-import { ContentService } from './content.service';
 import { AppService } from '../app.service';
+import { Content } from './content.model';
+import { ContentService } from './content.service';
 
 @Component({
   selector: 'app-content',
@@ -11,7 +11,7 @@ import { AppService } from '../app.service';
 })
 export class ContentComponent implements OnInit {
 
-  public contents: Article[] = [];
+  public contents: Content[] = [];
 
   constructor(
     public app: AppService,
@@ -24,7 +24,7 @@ export class ContentComponent implements OnInit {
   }
 
   getMore() {
-    this.service.getMoreArticlesByRandom(7).subscribe(result => {
+    this.service.getMoreByRandom(7).subscribe(result => {
       if (result.status) {
         this.contents = result.content;
       } else {
@@ -33,7 +33,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  like(content: Article) {
+  like(content: Content) {
     this.service
       .like(content.id)
       .subscribe(result => {
@@ -46,7 +46,7 @@ export class ContentComponent implements OnInit {
       });
   }
 
-  share(content: Article) {
+  share(content: Content) {
     this.service
       .share(content.id)
       .subscribe(result => {
@@ -59,12 +59,12 @@ export class ContentComponent implements OnInit {
       });
   }
 
-  openDetail(content: Article) {
+  openDetail(content: Content) {
     // this.router.navigate([content.category, content.id]);
     this.router.navigate(['article', content.id]);
   }
 
-  trackByFn(index: number, item: Article) {
+  trackByFn(index: number, item: Content) {
     return item.date;
   }
 

@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { highlightAuto } from 'highlight.js';
 import * as Marked from 'marked';
 import { Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
 import { destory } from 'src/app/other/destory';
-import { Article } from '../content.model';
+import { Content } from '../content.model';
 import { ContentService } from '../content.service';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article',
@@ -25,7 +25,7 @@ import { delay } from 'rxjs/operators';
 })
 export class ArticleComponent implements OnInit, OnDestroy {
 
-  public article: Article;
+  public article: Content;
 
   private subscriptions: Subscription[] = [];
 
@@ -41,7 +41,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
         .pipe(delay(1000))
         .subscribe(v => {
           const id = +v.get('id') || 0;
-          this.service.getOneArticleByID(id)
+          this.service.getOneByID(id)
             .subscribe(result => {
               if (result.status) {
                 this.article = result.content;
