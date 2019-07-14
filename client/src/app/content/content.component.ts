@@ -24,7 +24,7 @@ export class ContentComponent implements OnInit {
   }
 
   getMore() {
-    this.service.getMoreByRandom(7).subscribe(result => {
+    this.service.getMoreByRecent(7).subscribe(result => {
       if (result.status) {
         this.contents = result.content;
       } else {
