@@ -16,11 +16,11 @@ export const routes: Route[] = [
   { path: 'category', component: CategoryComponent, data: { animation: '1' } },
   { path: 'content', component: ContentComponent, data: { animation: '1' } },
   { path: 'content/:category', component: ContentComponent, data: { animation: '2' } },
-  { path: 'article/:id', component: ArticleComponent, data: { animation: '3', reload: true } },
-  { path: 'image/:id', component: ImageComponent, data: { animation: '3', reload: true } },
-  { path: 'question/:id', component: QuestionComponent, data: { animation: '3', reload: true } },
-  { path: 'song/:id', component: SongComponent, data: { animation: '3', reload: true } },
-  { path: 'video/:id', component: VideoComponent, data: { animation: '3', reload: true } }
+  { path: 'article/:id', component: ArticleComponent, data: { animation: '3' } },
+  { path: 'image/:id', component: ImageComponent, data: { animation: '3' } },
+  { path: 'question/:id', component: QuestionComponent, data: { animation: '3' } },
+  { path: 'song/:id', component: SongComponent, data: { animation: '3' } },
+  { path: 'video/:id', component: VideoComponent, data: { animation: '3' } }
 ];
 
 @NgModule({

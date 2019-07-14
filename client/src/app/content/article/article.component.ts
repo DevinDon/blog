@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { highlightAuto } from 'highlight.js';
 import * as Marked from 'marked';
 import { Subscription } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, tap } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
 import { destory } from 'src/app/other/destory';
 import { Content } from '../content.model';
@@ -38,7 +38,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(
       this.route.paramMap
-        .pipe(delay(1000))
+        .pipe(
+          tap(() => this.article = undefined as any),
+          delay(1000)
+        )
         .subscribe(v => {
           const id = +v.get('id') || 0;
           this.service.getOneByID(id)
