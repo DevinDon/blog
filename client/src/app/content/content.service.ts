@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ApiService } from '../api.service';
+import { BaseResponse } from '../other/response.model';
 import { Content } from './content.model';
 
 @Injectable({
@@ -15,25 +16,25 @@ export class ContentService {
     public api: ApiService
   ) { }
 
-  getOneByID(id: number) {
+  getOneByID(id: number): Observable<BaseResponse<Content>> {
     return (this.cache[id] && of({ status: true, content: this.cache[id] })) || this.api.get<Content>(`/content/${id}`);
   }
 
-  getMoreByRandom(total: number) {
+  getMoreByRandom(total: number): Observable<BaseResponse<Content[]>> {
     return this.api.get<Content[]>(`/content/random/${total}`)
       .pipe(tap(result => result.status && result.content.forEach(content => this.cache[content.id] = content)));
   }
 
-  getMoreByRecent(total: number) {
+  getMoreByRecent(total: number): Observable<BaseResponse<Content[]>> {
     return this.api.get<Content[]>(`/content/recent/${total}`)
       .pipe(tap(result => result.status && result.content.forEach(content => this.cache[content.id] = content)));
   }
 
-  like(id: number) {
+  like(id: number): Observable<BaseResponse<number>> {
     return this.api.patch<number>(`/content/like/${id}`);
   }
 
-  share(id: number) {
+  share(id: number): Observable<BaseResponse<number>> {
     return this.api.patch<number>(`/content/share/${id}`);
   }
 
