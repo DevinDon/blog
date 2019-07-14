@@ -17,16 +17,25 @@ export class ApiService {
     }
   }
 
+
+  delete<T = any>(path: string) {
+    return this.http.delete<BaseResponse<T>>(ApiService.HOST + path);
+  }
+
   get<T = any>(path: string) {
     return this.http.get<BaseResponse<T>>(ApiService.HOST + path);
   }
 
-  patch<T = any>(path: string, data: any) {
+  patch<T = any>(path: string, data: any = {}) {
     return this.http.patch<BaseResponse<T>>(ApiService.HOST + path, data);
   }
 
-  post<T = any>(path: string, data: any) {
+  post<T = any>(path: string, data: any = {}) {
     return this.http.post<BaseResponse<T>>(ApiService.HOST + path, data);
+  }
+
+  put<T = any>(path: string, data: any = {}) {
+    return this.http.put<BaseResponse<T>>(ApiService.HOST + path, data);
   }
 
 }
