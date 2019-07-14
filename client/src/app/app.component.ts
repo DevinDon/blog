@@ -26,7 +26,7 @@ import { AppService } from './app.service';
           [
             style(
               {
-                position: 'absolute', top: 0, right: 0, opacity: 0, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1'
+                position: 'fixed', top: 0, right: 0, opacity: 0, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1'
               }
             )
           ],
@@ -58,7 +58,7 @@ import { AppService } from './app.service';
           [
             style(
               {
-                position: 'absolute', top: 0, right: 0, opacity: 1, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1'
+                position: 'fixed', top: 0, right: 0, opacity: 1, width: '100%', minHeight: '100vh', backgroundColor: '#fff', zIndex: '1'
               }
             )
           ],
