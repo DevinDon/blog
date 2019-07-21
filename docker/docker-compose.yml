@@ -2,18 +2,18 @@ version: '3.7'
 
 services:
 
-  # # PostgreSQL, backend ,expose 5432
-  # blog-database:
-  #   image: postgres
-  #   environment:
-  #     POSTGRES_USER: application
-  #     POSTGRES_PASSWORD: application
-  #     POSTGRES_DB: application
-  #   networks:
-  #     - overnet
-  #   volumes:
-  #     - "blog-database:/var/lib/postgresql/data"
-  #   #   - ./config/postgresql:/etc/postgresql:ro
+  # PostgreSQL, backend ,expose 5432
+  blog-database:
+    image: postgres
+    environment:
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blog
+      POSTGRES_DB: blog
+    networks:
+      - overnet
+    volumes:
+      - "blog-database:/var/lib/postgresql/data"
+    #   - ./config/postgresql:/etc/postgresql:ro
 
   # # Redis, backend, expose 6379
   # blog-redis:
@@ -37,8 +37,8 @@ services:
         window: 10s
     networks:
       - overnet
-    volumes:
-      - "blog-database:/db:rw"
+    # volumes:
+    #   - "blog-database:/db:rw"
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   blog-client:
