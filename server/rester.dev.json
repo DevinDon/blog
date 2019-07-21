@@ -1,7 +1,11 @@
 {
   "database": {
-    "type": "sqlite",
-    "database": "sqlite.dev.db",
+    "type": "postgres",
+    "host": "t-1.don.red",
+    "port": 5432,
+    "username": "blog",
+    "password": "blog",
+    "database": "blog",
     "entities": [
       "**/*.entity.ts"
     ],

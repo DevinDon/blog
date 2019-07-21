@@ -5,8 +5,12 @@
     "porxy": true
   },
   "database": {
-    "type": "sqlite",
-    "database": "/db/sqlite.db",
+    "type": "postgres",
+    "host": "t-1.don.red",
+    "port": 5432,
+    "username": "blog",
+    "password": "blog",
+    "database": "blog",
     "entities": [
       "**/*.entity.js"
     ],

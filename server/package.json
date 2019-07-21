@@ -28,7 +28,7 @@
   "private": true,
   "dependencies": {
     "@rester/core": "0.10.2",
-    "sqlite3": "4.0.9"
+    "pg": "7.11.0"
   },
   "devDependencies": {
     "@types/jasmine": "3.3.13",
